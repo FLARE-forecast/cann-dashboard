@@ -1,9 +1,3 @@
-index_files/*
-data_raw/*
-targets/*
-
-.Rproj.user
 .Rhistory
-.RData
-.Ruserdata
-/.quarto/
+.Rproj.user
+docs/
