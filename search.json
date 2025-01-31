@@ -4,21 +4,28 @@
     "href": "index.html",
     "title": "Current Conditions",
     "section": "",
-    "text": "Welcome to the Lake Alexandrina dashboad, hosted by the Virginia Tech Center for Ecosystem Forecasting (CEF)."
+    "text": "Welcome to the Lake Alexandrina dashboad, hosted by the Virginia Tech Center for Ecosystem Forecasting (CEF).   Disclaimer: The data provided on this page is experimental."
   },
   {
     "objectID": "index.html#current-conditions-for-lake-alexandrina",
     "href": "index.html#current-conditions-for-lake-alexandrina",
     "title": "Current Conditions",
     "section": "Current Conditions for Lake Alexandrina",
-    "text": "Current Conditions for Lake Alexandrina\n \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n21.8 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.4 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Depth\n5.9 m\n\n\n\n\n\n\n\n\n\n  This material is based upon work supported by the National Science Foundation under Grant DEB-2327030. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.   Page last updated on 2025-01-29"
+    "text": "Current Conditions for Lake Alexandrina\n \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n21.2 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.4 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Depth\n5.9 m"
+  },
+  {
+    "objectID": "index.html#where-is-this-data-coming-from",
+    "href": "index.html#where-is-this-data-coming-from",
+    "title": "Current Conditions",
+    "section": "Where is this data coming from?",
+    "text": "Where is this data coming from?\n\n\nReading layer `ALEX' from data source \n  `/__w/alex-dashboard/alex-dashboard/sites.json' using driver `GeoJSON'\nSimple feature collection with 2 features and 3 fields\nGeometry type: POINT\nDimension:     XY\nBounding box:  xmin: 139.0267 ymin: -35.5973 xmax: 139.1381 ymax: -35.4863\nGeodetic CRS:  WGS 84\n\n\n\n\n\n\n  This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.   Page last updated on 2025-01-31"
   },
   {
     "objectID": "water.html",
     "href": "water.html",
     "title": "Water Quality Forecasts",
     "section": "",
-    "text": "This page contains information about the water quality of Lake Alexandrina"
+    "text": "This page contains information about the water quality of Lake Alexandrina\nDisclaimer: The data provided on this page is experimental."
   },
   {
     "objectID": "water.html#water-temperature-forecast",
@@ -67,6 +74,6 @@
     "href": "weather.html",
     "title": "Weather Forecasts",
     "section": "",
-    "text": "This page contains information about weather in the Lake Alexandrina area\n \n\n\n\n\n\n\n\n\n\n\n```{# {r, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE} # # ## MAKE PLOTS # forecast_start_day &lt;- most_recent # historical_horizon &lt;- 10 # # ## wind speed # ws_ylims &lt;- c(0,40) # var_unit &lt;- ‘Wind Speed (km/hr)’ # var_title &lt;- ‘Wind Speed’ # # ws_plot &lt;- ggplot2::ggplot(full_met_data_df, ggplot2::aes(x = datetime)) + # ggplot2::ylim(ws_ylims) + # ggplot2::xlim(forecast_start_day - lubridate::days(historical_horizon), (max(full_met_data_df\\(datetime)) + lubridate::days(5)) + # ggplot2::geom_line(ggplot2::aes(y = wind_speed), color = 'black') + # ggplot2::geom_point(ggplot2::aes(x = datetime, y = wind_speed_obs), color = 'red') + # ggplot2::geom_vline(aes(xintercept = forecast_start_day), # alpha = 1, linetype = \"dashed\") + # ggplot2::annotate(x = (forecast_start_day - lubridate::days(3)), y = max(ws_ylims) - 1, label = 'Past', geom = 'text') + # ggplot2::annotate(x = (forecast_start_day + lubridate::days(3)), y = max(ws_ylims) - 1, label = 'Future', geom = 'text') + # ggplot2::theme_light() + # ggplot2::scale_linetype_manual(name = \"\", # values = c('solid'), # labels = c('Forecast Date')) + # ggplot2::scale_y_continuous(name = var_unit, # limits = ws_ylims) + # ggplot2::labs(x = \"Date\", # y = var_unit, # title = paste0(var_title,\" Forecast\", lubridate::date(full_met_data_df\\)forecast_start_day))) +#, # ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10), # plot.title = element_text(hjust = 0.5)) # # ws_plot\n```"
+    "text": "This page contains information about weather in the Lake Alexandrina area\n \nDisclaimer: The data provided on this page is experimental.\n \n\n\n\n\n\n\n\n\n\n\n```{# {r, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE} # # ## MAKE PLOTS # forecast_start_day &lt;- most_recent # historical_horizon &lt;- 10 # # ## wind speed # ws_ylims &lt;- c(0,40) # var_unit &lt;- ‘Wind Speed (km/hr)’ # var_title &lt;- ‘Wind Speed’ # # ws_plot &lt;- ggplot2::ggplot(full_met_data_df, ggplot2::aes(x = datetime)) + # ggplot2::ylim(ws_ylims) + # ggplot2::xlim(forecast_start_day - lubridate::days(historical_horizon), (max(full_met_data_df\\(datetime)) + lubridate::days(5)) + # ggplot2::geom_line(ggplot2::aes(y = wind_speed), color = 'black') + # ggplot2::geom_point(ggplot2::aes(x = datetime, y = wind_speed_obs), color = 'red') + # ggplot2::geom_vline(aes(xintercept = forecast_start_day), # alpha = 1, linetype = \"dashed\") + # ggplot2::annotate(x = (forecast_start_day - lubridate::days(3)), y = max(ws_ylims) - 1, label = 'Past', geom = 'text') + # ggplot2::annotate(x = (forecast_start_day + lubridate::days(3)), y = max(ws_ylims) - 1, label = 'Future', geom = 'text') + # ggplot2::theme_light() + # ggplot2::scale_linetype_manual(name = \"\", # values = c('solid'), # labels = c('Forecast Date')) + # ggplot2::scale_y_continuous(name = var_unit, # limits = ws_ylims) + # ggplot2::labs(x = \"Date\", # y = var_unit, # title = paste0(var_title,\" Forecast\", lubridate::date(full_met_data_df\\)forecast_start_day))) +#, # ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10), # plot.title = element_text(hjust = 0.5)) # # ws_plot\n```"
   }
 ]

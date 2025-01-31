@@ -82,10 +82,21 @@ background: img/banner.jpg;
       }
 </style>
 <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="site_libs/bslib-component-js-0.8.0/components.min.js"></script>
-<script src="site_libs/bslib-component-js-0.8.0/web-components.min.js" type="module"></script>
-<link href="site_libs/bslib-component-css-0.8.0/components.css" rel="stylesheet">
-<script src="site_libs/bslib-tag-require-0.8.0/tag-require.js"></script>
+<script src="site_libs/bslib-component-js-0.9.0/components.min.js"></script>
+<script src="site_libs/bslib-component-js-0.9.0/web-components.min.js" type="module"></script>
+<link href="site_libs/bslib-component-css-0.9.0/components.css" rel="stylesheet">
+<script src="site_libs/bslib-tag-require-0.9.0/tag-require.js"></script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -166,6 +177,7 @@ background: img/banner.jpg;
    
   <ul>
   <li><a href="#current-conditions-for-lake-alexandrina" id="toc-current-conditions-for-lake-alexandrina" class="nav-link active" data-scroll-target="#current-conditions-for-lake-alexandrina">Current Conditions for Lake Alexandrina</a></li>
+  <li><a href="#where-is-this-data-coming-from" id="toc-where-is-this-data-coming-from" class="nav-link" data-scroll-target="#where-is-this-data-coming-from">Where is this data coming from?</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/flare-forecast/alex-dashboard/blob/main/index.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/flare-forecast/alex-dashboard/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -175,7 +187,7 @@ background: img/banner.jpg;
 
 
 
-<p>Welcome to the Lake Alexandrina dashboad, hosted by the Virginia Tech Center for Ecosystem Forecasting (<a href="https://www.ecoforecast.centers.vt.edu/">CEF</a>).</p>
+<p>Welcome to the Lake Alexandrina dashboad, hosted by the Virginia Tech Center for Ecosystem Forecasting (<a href="https://www.ecoforecast.centers.vt.edu/">CEF</a>). <br> <br> Disclaimer: The data provided on this page is experimental.</p>
 <section id="current-conditions-for-lake-alexandrina" class="level2">
 <h2 class="anchored" data-anchor-id="current-conditions-for-lake-alexandrina">Current Conditions for Lake Alexandrina</h2>
 <p><br> <br></p>
@@ -190,7 +202,7 @@ background: img/banner.jpg;
 <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"></path></svg></div>
 <div class="value-box-area html-fill-item html-fill-container">
 <p class="value-box-title">Current Water Temperature</p>
-<p class="value-box-value">21.8 °C</p>
+<p class="value-box-value">21.2 °C</p>
 </div>
 </div>
 </div>
@@ -229,7 +241,25 @@ background: img/banner.jpg;
 </div>
 </div>
 </div>
-<p><br> <br> This material is based upon work supported by the National Science Foundation under Grant DEB-2327030. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. <br> <br> Page last updated on 2025-01-29</p>
+</section>
+<section id="where-is-this-data-coming-from" class="level2">
+<h2 class="anchored" data-anchor-id="where-is-this-data-coming-from">Where is this data coming from?</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `ALEX' from data source 
+  `/__w/alex-dashboard/alex-dashboard/sites.json' using driver `GeoJSON'
+Simple feature collection with 2 features and 3 fields
+Geometry type: POINT
+Dimension:     XY
+Bounding box:  xmin: 139.0267 ymin: -35.5973 xmax: 139.1381 ymax: -35.4863
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-5e11f70b114ef03533c9" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-5e11f70b114ef03533c9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-35.4391,139.1512],9,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OSM",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Imagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldTopoMap",null,"Topo Map",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addLayersControl","args":[["Imagery","OSM","Topo Map"],[],{"collapsed":true,"autoZIndex":true,"position":"topright"}]},{"method":"addMarkers","args":[[-35.4863,-35.5973],[139.1381,139.0267],null,null,["SA Water","SA Water"],{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Water Quality Data Site (Beacon 97)","Meteorology Data Site (Pelican Point)"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-35.5973,-35.4863],"lng":[139.0267,139.1381]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><br> <br> This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. <br> <br> Page last updated on 2025-01-31</p>
 
 
 </section>
