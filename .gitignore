@@ -1,4 +1,6 @@
 .Rhistory
 .Rproj.user
 docs/
-.quarto
+.quarto/
+data_raw/
+targets/
