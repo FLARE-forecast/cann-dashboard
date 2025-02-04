@@ -25,7 +25,7 @@
     "href": "water.html",
     "title": "Water Quality Forecasts",
     "section": "",
-    "text": "This page contains information about the water quality of Lake Alexandrina\nDisclaimer: The data provided on this page is experimental.\nAll forecasts are valid for 10:30am ACDT."
+    "text": "This page contains information about the water quality of Lake Alexandrina\nDisclaimer: The data provided on this page is experimental.\nAll forecasts are valid for 10:30am ACDT. Red dots indicate in-situ observations. The black line indicates the mean forecast predictions (both past and future), with uncertainty provided for future forecasts. Uncertainty is separated into sections of higher confidence (blue) and lower confidence (grey) based on predicted days ahead. The climatology average is also included to provide a comparison of the current observations and forecast predictions against typical conditions for this time period."
   },
   {
     "objectID": "water.html#water-temperature-forecast",
