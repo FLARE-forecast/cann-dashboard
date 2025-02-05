@@ -11,14 +11,14 @@
     "href": "index.html#current-water-conditions-for-lake-alexandrina",
     "title": "Current Conditions",
     "section": "Current Water Conditions for Lake Alexandrina",
-    "text": "Current Water Conditions for Lake Alexandrina\n Conditions are valid for 2025-02-05 17:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n22.4 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.4 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Height Above Sea Level\n0.6 AHD"
+    "text": "Current Water Conditions for Lake Alexandrina\n Conditions are valid for 2025-02-05 20:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n22.3 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.4 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Height Above Sea Level\n0.6 AHD"
   },
   {
     "objectID": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
     "href": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
     "title": "Current Conditions",
     "section": "Average Wind Conditions for Lake Alexandrina (last 6 hours)",
-    "text": "Average Wind Conditions for Lake Alexandrina (last 6 hours)\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n67.19  km/hr\n\n\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Direction\nESE"
+    "text": "Average Wind Conditions for Lake Alexandrina (last 6 hours)\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n35.59  km/hr\n\n\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Direction\nE"
   },
   {
     "objectID": "index.html#where-is-this-data-coming-from",
@@ -81,6 +81,13 @@
     "href": "weather.html",
     "title": "Weather Forecasts",
     "section": "",
-    "text": "This page contains information about weather in the Lake Alexandrina area\n\nDisclaimer: The data provided on this page is experimental."
+    "text": "This page contains information about weather in the Lake Alexandrina area\nDisclaimer: The data provided on this page is experimental."
+  },
+  {
+    "objectID": "weather.html#wind-forecast-with-historical-observations",
+    "href": "weather.html#wind-forecast-with-historical-observations",
+    "title": "Weather Forecasts",
+    "section": "Wind Forecast with Historical Observations",
+    "text": "Wind Forecast with Historical Observations"
   }
 ]
