@@ -11,21 +11,21 @@
     "href": "index.html#current-water-conditions-for-lake-alexandrina",
     "title": "Current Conditions",
     "section": "Current Water Conditions for Lake Alexandrina",
-    "text": "Current Water Conditions for Lake Alexandrina\n Conditions are valid for 2025-02-06 18:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n22.5 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.3 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Height\n0.6 AHD"
+    "text": "Current Water Conditions for Lake Alexandrina\n Conditions are valid for 2025-02-06 19:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n22.4 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.3 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Height\n0.6 AHD"
   },
   {
     "objectID": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
     "href": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
     "title": "Current Conditions",
     "section": "Average Wind Conditions for Lake Alexandrina (last 6 hours)",
-    "text": "Average Wind Conditions for Lake Alexandrina (last 6 hours)\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n72.96  km/hr\n\n\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Direction\nSSE"
+    "text": "Average Wind Conditions for Lake Alexandrina (last 6 hours)\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n77.91  km/hr\n\n\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Direction\nSSE"
   },
   {
     "objectID": "index.html#where-is-this-data-coming-from",
     "href": "index.html#where-is-this-data-coming-from",
     "title": "Current Conditions",
     "section": "Where is this data coming from?",
-    "text": "Where is this data coming from?\n\n\n\n\n\n\n  This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.  \nWe would like to acknowledge [SA Water] (https://www.sawater.com.au/) for providing observational data for the forecasts presented on this dashboard.  \nPage last updated on 2025-02-06"
+    "text": "Where is this data coming from?\n\n\n\n\n\n\n  This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.  \nWe would like to acknowledge SA Water for providing observational data for the forecasts presented on this dashboard.  \nPage last updated on 2025-02-06"
   },
   {
     "objectID": "water.html",
@@ -60,7 +60,7 @@
     "href": "learn-more.html",
     "title": "Learn more",
     "section": "",
-    "text": "See below for additional information about Lake Alexandrina, information on how to access the forecasts for this site, and information about the [Center for Ecosystem Forecasting] (https://ecoforecast.centers.vt.edu/) at Virginia Tech."
+    "text": "See below for additional information about Lake Alexandrina, information on how to access the forecasts for this site, and information about the Center for Ecosystem Forecasting at Virginia Tech."
   },
   {
     "objectID": "learn-more.html#relevant-research-from-the-center-for-ecosystem-forecasting",
@@ -74,7 +74,7 @@
     "href": "weather.html",
     "title": "Weather Forecasts",
     "section": "",
-    "text": "This page contains information about weather in the Lake Alexandrina area\nDisclaimer: The data provided on this page is experimental."
+    "text": "This page contains information about weather in the Lake Alexandrina area. Observations are provided by SA Water, and weather forecasts are provided by the NOAA GEFS model.\nDisclaimer: The data provided on this page is experimental."
   },
   {
     "objectID": "weather.html#wind-forecast-with-historical-observations",
