@@ -2,7 +2,7 @@
 title: "Current Conditions"
 ---
 
-### Welcome to the Lake Alexandrina dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting ([CEF](https://www.ecoforecast.centers.vt.edu/)).
+### Welcome to the Swan-Canning Weir Pool dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting ([CEF](https://www.ecoforecast.centers.vt.edu/)).
 
 ```{r setup, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE, out.width= '300px', out.height= '150px'}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
@@ -19,7 +19,7 @@ library(oce)
 
 Disclaimer: The data provided on this page are experimental.
 
-## Current Water Conditions for Lake Alexandrina
+## Current Conditions for Swan-Canning
 
 ```{r, include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
 # knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
@@ -38,10 +38,20 @@ source('R/historic_trend_calc.R')
 lake_directory <- getwd()
 options(timeout=300)
 
-obs_cleaned <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/ALEX/', endpoint_override = 'renc.osn.xsede.org', anonymous = TRUE)) |> 
-  dplyr::filter(is.na(inflow_name)) |> 
+# obs_cleaned <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/CANN/', endpoint_override = 'renc.osn.xsede.org', anonymous = TRUE)) |> 
+#   filter(variable %in% c('TEMP','salt','air_temperature','wind_speed')) |> ##insitu sensors and met 
+#   #dplyr::filter(is.na(inflow_name)) |> 
+#   collect() |> 
+#   lubridate::with_tz(datetime, tzone = "Australia/Perth")
+
+insitu_obs_url<- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-insitu.csv"
+
+obs_cleaned <- readr::read_csv(insitu_obs_url) |> 
+  filter(variable %in% c('TEMP','salt'),
+         depth == 1.5) |> ##insitu sensors and met 
+  #dplyr::filter(is.na(inflow_name)) |> 
   collect() |> 
-  lubridate::with_tz(datetime, tzone = "Australia/Adelaide")
+  lubridate::with_tz(datetime, tzone = "Australia/Perth")
 
 # obs_cleaned <- readr::read_csv(file.path(lake_directory, "targets/ALEX-targets-insitu.csv")) |> 
 #   lubridate::with_tz(datetime, tzone = "Australia/Adelaide")
@@ -50,17 +60,21 @@ obs_updated <- max(obs_cleaned$datetime,na.rm = TRUE)
 
 ```
 
+### Water Conditions
+
 ```{r}
 ## WATER TEMPERATURE 
-interest_var <- 'temperature'
-interest_site <- 'ALEX'
+interest_var <- 'TEMP'
+interest_site <- 'CANN'
 day_range <- 10
 
 temp_df <- obs_cleaned |> 
-  filter(variable == interest_var)
+  filter(variable == interest_var) #|> 
+  #mutate(variable = 'temperature')
 
 temp_updated <- temp_df |> 
   filter(datetime == max(temp_df$datetime)) |>
+  distinct(datetime) |> 
   pull(datetime)
 
 current_temp <- temp_df |> 
@@ -70,9 +84,9 @@ current_temp <- temp_df |>
 
 temp_clim_values <- climatology_calc(obs_df = temp_df, day_of_interest = temp_updated, clim_var = interest_var) ## returns CLIM AVG and BS ICON FOR ARROW DIRECTION
 
-temp_trend_future <- future_trend_calc(day_of_interest = temp_updated, interest_var = interest_var, days_ahead = day_range, interest_site = interest_site)
+temp_trend_future <- future_trend_calc(day_of_interest = temp_updated, interest_var = 'temperature', days_ahead = day_range, interest_site = interest_site)
 
-temp_trend_historic <- historic_trend_calc(day_of_interest = temp_updated, interest_var = interest_var, days_historic = day_range, interest_site = interest_site)
+temp_trend_historic <- historic_trend_calc(day_of_interest = temp_updated, interest_var = 'temperature', days_historic = day_range, interest_site = interest_site)
 
 ```
 
@@ -100,7 +114,7 @@ salt_trend_historic <- historic_trend_calc(day_of_interest = temp_updated, inter
 
 ```
 
-```{r}
+```{r, eval = FALSE}
 ## LAKE HEIGHT
 interest_var <- 'depth'
 
@@ -140,28 +154,29 @@ source('./R/degToCompass.R')
 #   filter(row_number() == n()) |> 
 #   pull(datetime)
 
-wind_targets <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/ALEX/', endpoint_override = 'renc.osn.xsede.org', anonymous = TRUE)) |> 
-  dplyr::filter(variable %in% c('wind_direction', 'wind_velocity')) |> 
+met_url <- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-met.csv"
+wind_targets <- readr::read_csv(met_url) |> 
+  dplyr::filter(variable %in% c('wind_speed')) |> 
   collect() |> 
-  mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Adelaide"))
+  mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Perth"))
 
 
 most_recent_wind <- wind_targets |> 
   filter(row_number() == n()) |> 
   pull(datetime)
 
-wind_dir_obs <- wind_targets |>
-  filter(variable == 'wind_direction') |> 
-  filter(datetime > (most_recent_wind - lubridate::hours(5))) |> 
-  mutate(wind_hour = lubridate::hour(datetime)) |> 
-  group_by(wind_hour) |>  
-  summarise(wind_dir_mean_hour = mean(observation, na.rm = TRUE)) |> 
-  ungroup() |>
-  summarise(wind_dir_mean = mean(wind_dir_mean_hour)) |> 
-  mutate(mean_wind_direction = degToCompass(wind_dir_mean))
+# wind_dir_obs <- wind_targets |>
+#   filter(variable == 'wind_direction') |> 
+#   filter(datetime > (most_recent_wind - lubridate::hours(5))) |> 
+#   mutate(wind_hour = lubridate::hour(datetime)) |> 
+#   group_by(wind_hour) |>  
+#   summarise(wind_dir_mean_hour = mean(observation, na.rm = TRUE)) |> 
+#   ungroup() |>
+#   summarise(wind_dir_mean = mean(wind_dir_mean_hour)) |> 
+#   mutate(mean_wind_direction = degToCompass(wind_dir_mean))
 
 wind_speed_obs <- wind_targets |>
-  filter(variable == 'wind_velocity') |>
+  filter(variable == 'wind_speed') |>
   filter(datetime >= (most_recent_wind - lubridate::hours(5))) |> 
   filter(datetime <= most_recent_wind) |> 
   mutate(wind_hour = lubridate::hour(datetime)) |> 
@@ -202,20 +217,20 @@ layout_column_wrap(
     value = current_salt,
     showcase = bs_icon("droplet-half"),
     theme_color = "primary"
-  ),
-    value_box(
-    title = "Current Lake Height", 
-    value = current_depth,
-    showcase = bs_icon("moisture"),
-    theme_color = "primary" 
-  )
+  )#,
+  #   value_box(
+  #   title = "Current Lake Height", 
+  #   value = current_depth,
+  #   showcase = bs_icon("moisture"),
+  #   theme_color = "primary" 
+  # )
 )
 
 ```
 
 <br />
 
-## Average Wind Conditions for Lake Alexandrina (last 6 hours)
+### Average Wind Conditions (last 6 hours)
 
 ```{r}
 layout_column_wrap(
@@ -225,19 +240,18 @@ layout_column_wrap(
     value = paste(round(wind_speed_obs$wind_speed_mean,2), ' km/hr'),
     showcase = bs_icon("cloud-fog2"),
     theme_color = "primary" 
-  ),
-  value_box(
-    title = "Average Wind Direction", 
-    value = wind_dir_obs$mean_wind_direction,
-    showcase = bs_icon("compass"),
-    theme_color = "primary"
-  )
+  )#,
+  # value_box(
+  #   title = "Average Wind Direction", 
+  #   value = wind_dir_obs$mean_wind_direction,
+  #   showcase = bs_icon("compass"),
+  #   theme_color = "primary"
+  # )
 )
 ```
 
-
-
 ## Comparison of Water Conditions to Climatology
+
 ```{r}
 layout_column_wrap(
   width = "250px",
@@ -252,19 +266,19 @@ layout_column_wrap(
     value = salt_clim_values[[3]],
     showcase = bs_icon(salt_clim_values[[2]]),
     theme_color = "primary"
-  ),
-    value_box(
-    title = "Lake Height Comparison", 
-    value = height_clim_values[[3]],
-    showcase = bs_icon(height_clim_values[[2]]),
-    theme_color = "primary" 
-  )
+  )#,
+  #   value_box(
+  #   title = "Lake Height Comparison", 
+  #   value = height_clim_values[[3]],
+  #   showcase = bs_icon(height_clim_values[[2]]),
+  #   theme_color = "primary" 
+  # )
 )
 
 ```
 
-
 ## Future 10-day Trend for Water Conditions
+
 ```{r}
 
 layout_column_wrap(
@@ -280,18 +294,19 @@ layout_column_wrap(
     value = salt_trend_future[[3]],
     showcase = bs_icon(salt_trend_future[[2]]),
     theme_color = "primary"
-  ),
-    value_box(
-    title = "Lake Height Trend", 
-    value = height_trend_future[[3]],
-    showcase = bs_icon(height_trend_future[[2]]),
-    theme_color = "primary" 
-  )
+  )#,
+  #   value_box(
+  #   title = "Lake Height Trend", 
+  #   value = height_trend_future[[3]],
+  #   showcase = bs_icon(height_trend_future[[2]]),
+  #   theme_color = "primary" 
+  # )
 )
 
 ```
 
 ## Past 10-day Trend for Water Conditions
+
 ```{r}
 
 layout_column_wrap(
@@ -307,16 +322,17 @@ layout_column_wrap(
     value = salt_trend_historic[[3]],
     showcase = bs_icon(salt_trend_historic[[2]]),
     theme_color = "primary"
-  ),
-    value_box(
-    title = "Lake Height Trend", 
-    value = height_trend_historic[[3]],
-    showcase = bs_icon(height_trend_historic[[2]]),
-    theme_color = "primary" 
-  )
+  )#,
+  #   value_box(
+  #   title = "Lake Height Trend", 
+  #   value = height_trend_historic[[3]],
+  #   showcase = bs_icon(height_trend_historic[[2]]),
+  #   theme_color = "primary" 
+  # )
 )
 
 ```
+
 ## Where is this data coming from?
 
 The observed data are from [SA Water](https://www.sawater.com.au/) at the locations in the map below
@@ -329,12 +345,12 @@ sites <- suppressMessages(sf::st_read("sites.json"))
 #sites <- suppressMessages(sf::st_read("sites.json"))
 
 leaflet() %>%
-  setView(lat = -35.4391, lng = 139.1512, zoom= 11) %>%
+  setView(lat = -32.022554, lng = 115.926847, zoom= 15) %>%
   addTiles(group="OSM") %>%
   addProviderTiles(providers$Esri.WorldImagery, group="Imagery") %>%
   addProviderTiles(providers$Esri.WorldTopoMap, group="Topo Map") %>%
-  addLayersControl(baseGroups=c('Imagery','OSM', 'Topo Map')) |> 
-  addMarkers(data  = sites, popup=~as.character(site_id), group = ~as.character(Partner))#, clusterOptions = markerClusterOptions())
+  addLayersControl(baseGroups=c('Imagery','OSM', 'Topo Map')) #|> 
+  #addMarkers(data  = sites, popup=~as.character(site_id), group = ~as.character(Partner))#, clusterOptions = markerClusterOptions())
 ```
 
 <br /> <br /> This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. <br /> <br />

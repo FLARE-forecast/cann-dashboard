@@ -3,9 +3,9 @@ project:
   output-dir: docs
 
 website:
-  title: "Lake Alexandrina Dashboard"
+  title: "Swan-Canning Dashboard"
   page-navigation: true
-  repo-url: https://github.com/flare-forecast/alex-dashboard
+  repo-url: https://github.com/flare-forecast/cann-dashboard
   repo-actions: [source, issue]
 
   navbar:
@@ -25,7 +25,7 @@ website:
     left: "CC-BY"
     right:
       - icon: github
-        href: https://github.com/FLARE-forecast/alex-dashboard
+        href: https://github.com/FLARE-forecast/cann-dashboard
 
 format:
   html:
