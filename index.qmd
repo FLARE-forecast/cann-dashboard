@@ -2,7 +2,7 @@
 title: "Current Conditions"
 ---
 
-### Welcome to the Swan-Canning Weir Pool dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting ([CEF](https://www.ecoforecast.centers.vt.edu/)).
+### Welcome to the Canning Weir Pool dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting ([CEF](https://www.ecoforecast.centers.vt.edu/)).
 
 ```{r setup, include=TRUE, echo=FALSE, message=FALSE, warning=FALSE, out.width= '300px', out.height= '150px'}
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
@@ -19,7 +19,7 @@ library(oce)
 
 Disclaimer: The data provided on this page are experimental.
 
-## Current Conditions for Swan-Canning
+## Current Conditions for Canning Weir Pool
 
 ```{r, include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
 # knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
