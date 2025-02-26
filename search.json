@@ -1,82 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Current Conditions",
-    "section": "",
-    "text": "Disclaimer: The data provided on this page are experimental."
-  },
-  {
-    "objectID": "index.html#current-water-conditions-for-lake-alexandrina",
-    "href": "index.html#current-water-conditions-for-lake-alexandrina",
-    "title": "Current Conditions",
-    "section": "Current Water Conditions for Lake Alexandrina",
-    "text": "Current Water Conditions for Lake Alexandrina\n Conditions are valid for 2025-02-25 20:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n20.6 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.4 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Height\n5.8 AHD"
-  },
-  {
-    "objectID": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
-    "href": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
-    "title": "Current Conditions",
-    "section": "Average Wind Conditions for Lake Alexandrina (last 6 hours)",
-    "text": "Average Wind Conditions for Lake Alexandrina (last 6 hours)\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n12.82  km/hr\n\n\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Direction\nSSE"
-  },
-  {
-    "objectID": "index.html#comparison-of-water-conditions-to-climatology",
-    "href": "index.html#comparison-of-water-conditions-to-climatology",
-    "title": "Current Conditions",
-    "section": "Comparison of Water Conditions to Climatology",
-    "text": "Comparison of Water Conditions to Climatology\n\n\n\n\n\n\n\n\n\nWater Temperature Trend\nSimilar\n\n\n\n\n\n\n\n\n\n\n\n\nWater Salinity Trend\nSimilar\n\n\n\n\n\n\n\n\n\n\n\n\nLake Height Comparison\nLower"
-  },
-  {
-    "objectID": "index.html#future-10-day-trend-for-water-conditions",
-    "href": "index.html#future-10-day-trend-for-water-conditions",
-    "title": "Current Conditions",
-    "section": "Future 10-day Trend for Water Conditions",
-    "text": "Future 10-day Trend for Water Conditions\n\n\n\n\n\n\n\n\n\nWater Temperature Trend\nNo Change\n\n\n\n\n\n\n\n\n\n\n\n\nWater Salinity Trend\nIncreasing\n\n\n\n\n\n\n\n\n\n\n\n\nLake Height Trend\nNo Change"
-  },
-  {
-    "objectID": "index.html#past-10-day-trend-for-water-conditions",
-    "href": "index.html#past-10-day-trend-for-water-conditions",
-    "title": "Current Conditions",
-    "section": "Past 10-day Trend for Water Conditions",
-    "text": "Past 10-day Trend for Water Conditions\n\n\n\n\n\n\n\n\n\nWater Temperature Trend\nNo Change\n\n\n\n\n\n\n\n\n\n\n\n\nWater Salinity Trend\nIncreasing\n\n\n\n\n\n\n\n\n\n\n\n\nLake Height Trend\nNo Change"
-  },
-  {
-    "objectID": "index.html#where-is-this-data-coming-from",
-    "href": "index.html#where-is-this-data-coming-from",
-    "title": "Current Conditions",
-    "section": "Where is this data coming from?",
-    "text": "Where is this data coming from?\nThe observed data are from SA Water at the locations in the map below\n\n\n\n\n\n\n  This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.  \nWe would like to acknowledge Water Data SA for providing observational data for the forecasts presented on this dashboard.  \nPage last updated on 2025-02-25"
-  },
-  {
-    "objectID": "water.html",
-    "href": "water.html",
-    "title": "Water Quality Forecasts",
-    "section": "",
-    "text": "This page contains information about the water quality of Lake Alexandrina. Water quality forecasts are created using the FLARE modeling framework deployed by the VT Center for Ecosystem Forecasting. Observational data is provided by Water Data SA.\nAll forecasts are valid for 10:30am ACDT (00:00 UTC). Red dots indicate in-situ observations. The black line indicates the mean forecast predictions (both past and future), with uncertainty provided for future forecasts. Uncertainty is separated into sections of higher confidence (blue) and lower confidence (grey) based on predicted days ahead. The climatology average is also included to provide a comparison of the current observations and forecast predictions against typical conditions for this time period.\nDisclaimer: The data provided on this page are experimental."
-  },
-  {
-    "objectID": "water.html#water-temperature-forecast",
-    "href": "water.html#water-temperature-forecast",
-    "title": "Water Quality Forecasts",
-    "section": "Water Temperature Forecast",
-    "text": "Water Temperature Forecast"
-  },
-  {
-    "objectID": "water.html#salinity-forecast",
-    "href": "water.html#salinity-forecast",
-    "title": "Water Quality Forecasts",
-    "section": "Salinity Forecast",
-    "text": "Salinity Forecast"
-  },
-  {
-    "objectID": "water.html#lake-depth-forecast",
-    "href": "water.html#lake-depth-forecast",
-    "title": "Water Quality Forecasts",
-    "section": "Lake Depth Forecast",
-    "text": "Lake Depth Forecast"
-  },
-  {
     "objectID": "learn-more.html",
     "href": "learn-more.html",
     "title": "Learn more",
@@ -110,5 +33,82 @@
     "title": "Weather Forecasts",
     "section": "Air Temperature Forecast with Historical Forecast",
     "text": "Air Temperature Forecast with Historical Forecast"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Current Conditions",
+    "section": "",
+    "text": "Disclaimer: The data provided on this page are experimental."
+  },
+  {
+    "objectID": "index.html#current-water-conditions-for-lake-alexandrina",
+    "href": "index.html#current-water-conditions-for-lake-alexandrina",
+    "title": "Current Conditions",
+    "section": "Current Water Conditions for Lake Alexandrina",
+    "text": "Current Water Conditions for Lake Alexandrina\n Conditions are valid for 2025-02-26 20:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n21.4 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n0.4 ppt\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Lake Height\n5.8 AHD"
+  },
+  {
+    "objectID": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
+    "href": "index.html#average-wind-conditions-for-lake-alexandrina-last-6-hours",
+    "title": "Current Conditions",
+    "section": "Average Wind Conditions for Lake Alexandrina (last 6 hours)",
+    "text": "Average Wind Conditions for Lake Alexandrina (last 6 hours)\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n21.65  km/hr\n\n\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Direction\nSSE"
+  },
+  {
+    "objectID": "index.html#comparison-of-water-conditions-to-climatology",
+    "href": "index.html#comparison-of-water-conditions-to-climatology",
+    "title": "Current Conditions",
+    "section": "Comparison of Water Conditions to Climatology",
+    "text": "Comparison of Water Conditions to Climatology\n\n\n\n\n\n\n\n\n\nWater Temperature Trend\nSimilar\n\n\n\n\n\n\n\n\n\n\n\n\nWater Salinity Trend\nSimilar\n\n\n\n\n\n\n\n\n\n\n\n\nLake Height Comparison\nLower"
+  },
+  {
+    "objectID": "index.html#future-10-day-trend-for-water-conditions",
+    "href": "index.html#future-10-day-trend-for-water-conditions",
+    "title": "Current Conditions",
+    "section": "Future 10-day Trend for Water Conditions",
+    "text": "Future 10-day Trend for Water Conditions\n\n\n\n\n\n\n\n\n\nWater Temperature Trend\nNo Change\n\n\n\n\n\n\n\n\n\n\n\n\nWater Salinity Trend\nIncreasing\n\n\n\n\n\n\n\n\n\n\n\n\nLake Height Trend\nIncreasing"
+  },
+  {
+    "objectID": "index.html#past-10-day-trend-for-water-conditions",
+    "href": "index.html#past-10-day-trend-for-water-conditions",
+    "title": "Current Conditions",
+    "section": "Past 10-day Trend for Water Conditions",
+    "text": "Past 10-day Trend for Water Conditions\n\n\n\n\n\n\n\n\n\nWater Temperature Trend\nNo Change\n\n\n\n\n\n\n\n\n\n\n\n\nWater Salinity Trend\nIncreasing\n\n\n\n\n\n\n\n\n\n\n\n\nLake Height Trend\nNo Change"
+  },
+  {
+    "objectID": "index.html#where-is-this-data-coming-from",
+    "href": "index.html#where-is-this-data-coming-from",
+    "title": "Current Conditions",
+    "section": "Where is this data coming from?",
+    "text": "Where is this data coming from?\nThe observed data are from SA Water at the locations in the map below\n\n\n\n\n\n\n  This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.  \nWe would like to acknowledge Water Data SA for providing observational data for the forecasts presented on this dashboard.  \nPage last updated on 2025-02-26"
+  },
+  {
+    "objectID": "water.html",
+    "href": "water.html",
+    "title": "Water Quality Forecasts",
+    "section": "",
+    "text": "This page contains information about the water quality of Lake Alexandrina. Water quality forecasts are created using the FLARE modeling framework deployed by the VT Center for Ecosystem Forecasting. Observational data is provided by Water Data SA.\nAll forecasts are valid for 10:30am ACDT (00:00 UTC). Red dots indicate in-situ observations. The black line indicates the mean forecast predictions (both past and future), with uncertainty provided for future forecasts. Uncertainty is separated into sections of higher confidence (blue) and lower confidence (grey) based on predicted days ahead. The climatology average is also included to provide a comparison of the current observations and forecast predictions against typical conditions for this time period.\nDisclaimer: The data provided on this page are experimental."
+  },
+  {
+    "objectID": "water.html#water-temperature-forecast",
+    "href": "water.html#water-temperature-forecast",
+    "title": "Water Quality Forecasts",
+    "section": "Water Temperature Forecast",
+    "text": "Water Temperature Forecast"
+  },
+  {
+    "objectID": "water.html#salinity-forecast",
+    "href": "water.html#salinity-forecast",
+    "title": "Water Quality Forecasts",
+    "section": "Salinity Forecast",
+    "text": "Salinity Forecast"
+  },
+  {
+    "objectID": "water.html#lake-depth-forecast",
+    "href": "water.html#lake-depth-forecast",
+    "title": "Water Quality Forecasts",
+    "section": "Lake Depth Forecast",
+    "text": "Lake Depth Forecast"
   }
 ]
