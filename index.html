@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lake Alexandrina Dashboard - Current Conditions</title>
+<title>Swan-Canning Dashboard - Current Conditions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -110,7 +110,7 @@ background: img/banner.jpg;
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Lake Alexandrina Dashboard</span>
+    <span class="navbar-title">Swan-Canning Dashboard</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -171,15 +171,18 @@ background: img/banner.jpg;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-the-lake-alexandrina-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef." id="toc-welcome-to-the-lake-alexandrina-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef." class="nav-link active" data-scroll-target="#welcome-to-the-lake-alexandrina-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef.">Welcome to the Lake Alexandrina dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting (CEF).</a></li>
-  <li><a href="#current-water-conditions-for-lake-alexandrina" id="toc-current-water-conditions-for-lake-alexandrina" class="nav-link" data-scroll-target="#current-water-conditions-for-lake-alexandrina">Current Water Conditions for Lake Alexandrina</a></li>
-  <li><a href="#average-wind-conditions-for-lake-alexandrina-last-6-hours" id="toc-average-wind-conditions-for-lake-alexandrina-last-6-hours" class="nav-link" data-scroll-target="#average-wind-conditions-for-lake-alexandrina-last-6-hours">Average Wind Conditions for Lake Alexandrina (last 6 hours)</a></li>
+  <li><a href="#welcome-to-the-swan-canning-weir-pool-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef." id="toc-welcome-to-the-swan-canning-weir-pool-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef." class="nav-link active" data-scroll-target="#welcome-to-the-swan-canning-weir-pool-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef.">Welcome to the Swan-Canning Weir Pool dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting (CEF).</a></li>
+  <li><a href="#current-conditions-for-swan-canning" id="toc-current-conditions-for-swan-canning" class="nav-link" data-scroll-target="#current-conditions-for-swan-canning">Current Conditions for Swan-Canning</a>
+  <ul class="collapse">
+  <li><a href="#water-conditions" id="toc-water-conditions" class="nav-link" data-scroll-target="#water-conditions">Water Conditions</a></li>
+  <li><a href="#average-wind-conditions-last-6-hours" id="toc-average-wind-conditions-last-6-hours" class="nav-link" data-scroll-target="#average-wind-conditions-last-6-hours">Average Wind Conditions (last 6 hours)</a></li>
+  </ul></li>
   <li><a href="#comparison-of-water-conditions-to-climatology" id="toc-comparison-of-water-conditions-to-climatology" class="nav-link" data-scroll-target="#comparison-of-water-conditions-to-climatology">Comparison of Water Conditions to Climatology</a></li>
   <li><a href="#future-10-day-trend-for-water-conditions" id="toc-future-10-day-trend-for-water-conditions" class="nav-link" data-scroll-target="#future-10-day-trend-for-water-conditions">Future 10-day Trend for Water Conditions</a></li>
   <li><a href="#past-10-day-trend-for-water-conditions" id="toc-past-10-day-trend-for-water-conditions" class="nav-link" data-scroll-target="#past-10-day-trend-for-water-conditions">Past 10-day Trend for Water Conditions</a></li>
   <li><a href="#where-is-this-data-coming-from" id="toc-where-is-this-data-coming-from" class="nav-link" data-scroll-target="#where-is-this-data-coming-from">Where is this data coming from?</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/flare-forecast/alex-dashboard/blob/main/index.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/flare-forecast/alex-dashboard/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/flare-forecast/cann-dashboard/blob/main/index.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/flare-forecast/cann-dashboard/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
@@ -187,8 +190,8 @@ background: img/banner.jpg;
 
 
 
-<section id="welcome-to-the-lake-alexandrina-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef." class="level3">
-<h3 class="anchored" data-anchor-id="welcome-to-the-lake-alexandrina-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef.">Welcome to the Lake Alexandrina dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting (<a href="https://www.ecoforecast.centers.vt.edu/">CEF</a>).</h3>
+<section id="welcome-to-the-swan-canning-weir-pool-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef." class="level3">
+<h3 class="anchored" data-anchor-id="welcome-to-the-swan-canning-weir-pool-dashboard-hosted-by-the-virginia-tech-center-for-ecosystem-forecasting-cef.">Welcome to the Swan-Canning Weir Pool dashboard, hosted by the Virginia Tech Center for Ecosystem Forecasting (<a href="https://www.ecoforecast.centers.vt.edu/">CEF</a>).</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="vt_cef.jpg" class="img-fluid figure-img" style="width:40.0%"></p>
@@ -196,9 +199,11 @@ background: img/banner.jpg;
 </div>
 <p>Disclaimer: The data provided on this page are experimental.</p>
 </section>
-<section id="current-water-conditions-for-lake-alexandrina" class="level2">
-<h2 class="anchored" data-anchor-id="current-water-conditions-for-lake-alexandrina">Current Water Conditions for Lake Alexandrina</h2>
-<p><br> Conditions are valid for 2025-02-26 20:00:00 <br></p>
+<section id="current-conditions-for-swan-canning" class="level2">
+<h2 class="anchored" data-anchor-id="current-conditions-for-swan-canning">Current Conditions for Swan-Canning</h2>
+<section id="water-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="water-conditions">Water Conditions</h3>
+<p><br> Conditions are valid for 2025-02-18 08:00:00 <br></p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="bslib-grid bslib-mb-spacing html-fill-item" data-require-bs-caller="layout_column_wrap()" data-require-bs-version="5" style="grid-template-columns:repeat(auto-fit, minmax(min(250px, 100%), 1fr));grid-auto-rows:1fr;--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;">
@@ -210,7 +215,7 @@ background: img/banner.jpg;
 <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"></path></svg></div>
 <div class="value-box-area html-fill-item html-fill-container">
 <p class="value-box-title">Current Water Temperature</p>
-<p class="value-box-value">21.4 °C</p>
+<p class="value-box-value">25.5 °C</p>
 </div>
 </div>
 </div>
@@ -225,21 +230,7 @@ background: img/banner.jpg;
 <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"></path></svg></div>
 <div class="value-box-area html-fill-item html-fill-container">
 <p class="value-box-title">Current Salinity</p>
-<p class="value-box-value">0.4 ppt</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
-</div>
-</div>
-<div class="bslib-grid-item bslib-gap-spacing html-fill-container">
-<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
-<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
-<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
-<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-moisture " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path d="M13.5 0a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V7.5h-1.5a.5.5 0 0 0 0 1H15v2.75h-.5a.5.5 0 0 0 0 1h.5V15h-1.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V.5a.5.5 0 0 0-.5-.5h-2zM7 1.5l.364-.343a.5.5 0 0 0-.728 0l-.002.002-.006.007-.022.023-.08.088a28.458 28.458 0 0 0-1.274 1.517c-.769.983-1.714 2.325-2.385 3.727C2.368 7.564 2 8.682 2 9.733 2 12.614 4.212 15 7 15s5-2.386 5-5.267c0-1.05-.368-2.169-.867-3.212-.671-1.402-1.616-2.744-2.385-3.727a28.458 28.458 0 0 0-1.354-1.605l-.022-.023-.006-.007-.002-.001L7 1.5zm0 0-.364-.343L7 1.5zm-.016.766L7 2.247l.016.019c.24.274.572.667.944 1.144.611.781 1.32 1.776 1.901 2.827H4.14c.58-1.051 1.29-2.046 1.9-2.827.373-.477.706-.87.945-1.144zM3 9.733c0-.755.244-1.612.638-2.496h6.724c.395.884.638 1.741.638 2.496C11 12.117 9.182 14 7 14s-4-1.883-4-4.267z"></path></svg></div>
-<div class="value-box-area html-fill-item html-fill-container">
-<p class="value-box-title">Current Lake Height</p>
-<p class="value-box-value">5.8 AHD</p>
+<p class="value-box-value">7.8 ppt</p>
 </div>
 </div>
 </div>
@@ -251,8 +242,8 @@ background: img/banner.jpg;
 </div>
 <p><br></p>
 </section>
-<section id="average-wind-conditions-for-lake-alexandrina-last-6-hours" class="level2">
-<h2 class="anchored" data-anchor-id="average-wind-conditions-for-lake-alexandrina-last-6-hours">Average Wind Conditions for Lake Alexandrina (last 6 hours)</h2>
+<section id="average-wind-conditions-last-6-hours" class="level3">
+<h3 class="anchored" data-anchor-id="average-wind-conditions-last-6-hours">Average Wind Conditions (last 6 hours)</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div class="bslib-grid bslib-mb-spacing html-fill-item" data-require-bs-caller="layout_column_wrap()" data-require-bs-version="5" style="grid-template-columns:repeat(auto-fit, minmax(min(250px, 100%), 1fr));grid-auto-rows:1fr;--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;">
@@ -263,22 +254,7 @@ background: img/banner.jpg;
 <div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-cloud-fog2 " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path d="M8.5 4a4.002 4.002 0 0 0-3.8 2.745.5.5 0 1 1-.949-.313 5.002 5.002 0 0 1 9.654.595A3 3 0 0 1 13 13H.5a.5.5 0 0 1 0-1H13a2 2 0 0 0 .001-4h-.026a.5.5 0 0 1-.5-.445A4 4 0 0 0 8.5 4zM0 8.5A.5.5 0 0 1 .5 8h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"></path></svg></div>
 <div class="value-box-area html-fill-item html-fill-container">
 <p class="value-box-title">Average Wind Speed</p>
-<p class="value-box-value">21.65  km/hr</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
-</div>
-</div>
-<div class="bslib-grid-item bslib-gap-spacing html-fill-container">
-<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
-<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
-<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
-<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-compass " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"></path>
-<path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"></path></svg></div>
-<div class="value-box-area html-fill-item html-fill-container">
-<p class="value-box-title">Average Wind Direction</p>
-<p class="value-box-value">SSE</p>
+<p class="value-box-value">32.26  km/hr</p>
 </div>
 </div>
 </div>
@@ -288,6 +264,7 @@ background: img/banner.jpg;
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="comparison-of-water-conditions-to-climatology" class="level2">
 <h2 class="anchored" data-anchor-id="comparison-of-water-conditions-to-climatology">Comparison of Water Conditions to Climatology</h2>
@@ -312,24 +289,10 @@ background: img/banner.jpg;
 <div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
 <div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
 <div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
-<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-arrow-bar-right " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"></path></svg></div>
+<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-arrow-bar-up " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"></path></svg></div>
 <div class="value-box-area html-fill-item html-fill-container">
 <p class="value-box-title">Water Salinity Trend</p>
-<p class="value-box-value">Similar</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
-</div>
-</div>
-<div class="bslib-grid-item bslib-gap-spacing html-fill-container">
-<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
-<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
-<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
-<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-arrow-bar-down " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z"></path></svg></div>
-<div class="value-box-area html-fill-item html-fill-container">
-<p class="value-box-title">Lake Height Comparison</p>
-<p class="value-box-value">Lower</p>
+<p class="value-box-value">Higher</p>
 </div>
 </div>
 </div>
@@ -366,20 +329,6 @@ background: img/banner.jpg;
 <div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-graph-up-arrow " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"></path></svg></div>
 <div class="value-box-area html-fill-item html-fill-container">
 <p class="value-box-title">Water Salinity Trend</p>
-<p class="value-box-value">Increasing</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
-</div>
-</div>
-<div class="bslib-grid-item bslib-gap-spacing html-fill-container">
-<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
-<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
-<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
-<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-graph-up-arrow " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"></path></svg></div>
-<div class="value-box-area html-fill-item html-fill-container">
-<p class="value-box-title">Lake Height Trend</p>
 <p class="value-box-value">Increasing</p>
 </div>
 </div>
@@ -424,20 +373,6 @@ background: img/banner.jpg;
 <script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
 </div>
 </div>
-<div class="bslib-grid-item bslib-gap-spacing html-fill-container">
-<div class="card bslib-card bslib-mb-spacing html-fill-item html-fill-container bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card() value_box()" data-require-bs-version="5 5">
-<div class="card-body bslib-gap-spacing html-fill-item html-fill-container" style="margin-top:auto;margin-bottom:auto;flex:1 1 auto; padding:0;">
-<div class="value-box-grid html-fill-item" style="--bslib-grid-height:auto;--bslib-grid-height-mobile:auto;---bslib-value-box-showcase-w:30%;---bslib-value-box-showcase-w-fs:1fr;---bslib-value-box-showcase-max-h:100px;---bslib-value-box-showcase-max-h-fs:67%;">
-<div class="value-box-showcase html-fill-item html-fill-container"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-arrow-bar-right " style="height:1em;width:1em;fill:currentColor;vertical-align:-0.125em;" aria-hidden="true" role="img"><path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"></path></svg></div>
-<div class="value-box-area html-fill-item html-fill-container">
-<p class="value-box-title">Lake Height Trend</p>
-<p class="value-box-value">No Change</p>
-</div>
-</div>
-</div>
-<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -447,8 +382,8 @@ background: img/banner.jpg;
 <p>The observed data are from <a href="https://www.sawater.com.au/">SA Water</a> at the locations in the map below</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-d21416cd9fd36b19cbaf" style="width:100%;height:650px;"></div>
-<script type="application/json" data-for="htmlwidget-d21416cd9fd36b19cbaf">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-35.4391,139.1512],11,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OSM",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Imagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldTopoMap",null,"Topo Map",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addLayersControl","args":[["Imagery","OSM","Topo Map"],[],{"collapsed":true,"autoZIndex":true,"position":"topright"}]},{"method":"addMarkers","args":[[-35.4863,-35.5973],[139.1381,139.0267],null,null,["SA Water","SA Water"],{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Water Quality Data Site (Beacon 97)","Meteorology Data Site (Pelican Point)"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-35.5973,-35.4863],"lng":[139.0267,139.1381]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-2817061764eaa079840d" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-2817061764eaa079840d">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[-32.022554,115.926847],15,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OSM",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Imagery",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldTopoMap",null,"Topo Map",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addLayersControl","args":[["Imagery","OSM","Topo Map"],[],{"collapsed":true,"autoZIndex":true,"position":"topright"}]}]},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br> <br> This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. <br> <br></p>
@@ -768,7 +703,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/FLARE-forecast/alex-dashboard">
+    <a class="nav-link" href="https://github.com/FLARE-forecast/cann-dashboard">
       <i class="bi bi-github" role="img">
 </i> 
     </a>
