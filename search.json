@@ -18,7 +18,7 @@
     "href": "weather.html",
     "title": "Weather Forecasts",
     "section": "",
-    "text": "This page contains information about weather in the Lake Alexandrina area. Weather forecasts shown here are provided by the U.S. based NOAA GEFS model, which is used as input for the water quality forecasts. Local weather forecasts can be accessed from the Bureau of Meteorology. Observations are provided by Water Data SA Disclaimer: The data provided on this page is experimental."
+    "text": "This page contains information about weather in the Canning Weir Pool area. Weather forecasts shown here are provided by the U.S. based NOAA GEFS model, which is used as input for the water quality forecasts. Local weather forecasts can be accessed from the Bureau of Meteorology. Observations are provided by Water Data SA Disclaimer: The data provided on this page is experimental."
   },
   {
     "objectID": "weather.html#wind-forecast-with-historical-observations",
@@ -42,11 +42,11 @@
     "text": "Disclaimer: The data provided on this page are experimental."
   },
   {
-    "objectID": "index.html#current-conditions-for-swan-canning",
-    "href": "index.html#current-conditions-for-swan-canning",
+    "objectID": "index.html#current-conditions-for-canning-weir-pool",
+    "href": "index.html#current-conditions-for-canning-weir-pool",
     "title": "Current Conditions",
-    "section": "Current Conditions for Swan-Canning",
-    "text": "Current Conditions for Swan-Canning\n\nWater Conditions\n Conditions are valid for 2025-02-18 08:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n25.5 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n7.8 ppt\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Conditions (last 6 hours)\n\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n32.26  km/hr"
+    "section": "Current Conditions for Canning Weir Pool",
+    "text": "Current Conditions for Canning Weir Pool\n\nWater Conditions\n Conditions are valid for 2025-02-18 08:00:00 \n\n\n\n\n\n\n\n\n\n\nCurrent Water Temperature\n25.5 °C\n\n\n\n\n\n\n\n\n\n\n\n\n\nCurrent Salinity\n7.8 ppt\n\n\n\n\n\n\n\n\n\n\n\nAverage Wind Conditions (last 6 hours)\n\n\n\n\n\n\n\n\n\n\nAverage Wind Speed\n32.26  km/hr"
   },
   {
     "objectID": "index.html#comparison-of-water-conditions-to-historical-average",
@@ -81,7 +81,7 @@
     "href": "water.html",
     "title": "Water Quality Forecasts",
     "section": "",
-    "text": "This page contains information about the water quality of Swan-Canning Weir Pool water quality forecasts are created using the FLARE modeling framework deployed by the VT Center for Ecosystem Forecasting. Observational data is provided by Water Data SA.\nAll forecasts are valid for 8:00am AWST (00:00 UTC). Red dots indicate in-situ observations. The black line indicates the mean forecast predictions (both past and future), with uncertainty provided for future forecasts. Uncertainty is separated into sections of higher confidence (blue) and lower confidence (grey) based on predicted days ahead. The climatology average is also included to provide a comparison of the current observations and forecast predictions against typical conditions for this time period.\nDisclaimer: The data provided on this page are experimental."
+    "text": "This page contains information about the water quality of Canning Weir Pool water quality forecasts are created using the FLARE modeling framework deployed by the VT Center for Ecosystem Forecasting. Observational data is provided by Water Data SA.\nAll forecasts are valid for 8:00am AWST (00:00 UTC). Red dots indicate in-situ observations. The black line indicates the mean forecast predictions (both past and future), with uncertainty provided for future forecasts. Uncertainty is separated into sections of higher confidence (blue) and lower confidence (grey) based on predicted days ahead. The climatology average is also included to provide a comparison of the current observations and forecast predictions against typical conditions for this time period.\nDisclaimer: The data provided on this page are experimental."
   },
   {
     "objectID": "water.html#water-temperature-forecast",
