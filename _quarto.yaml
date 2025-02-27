@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Swan-Canning Dashboard"
+  title: "Canning Weir Pool Dashboard"
   page-navigation: true
   repo-url: https://github.com/flare-forecast/cann-dashboard
   repo-actions: [source, issue]
