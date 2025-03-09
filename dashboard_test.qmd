@@ -1,0 +1,331 @@
+---
+title: "Canning Weir Pool Dashboard"
+format: 
+  dashboard:
+    nav-buttons: [github]
+    github: https://github.com/FLARE-forecast/cann-dashboard
+logo: vt_cef.jpg
+theme: [sandstone, theme/custom.scss]
+fig-width: 10
+fig-asp: 0.3
+#params:
+  #month: "March"
+  #year: "2025"
+  # 2021 rates: https://www.cdc.gov/nchs/data/nvsr/nvsr72/nvsr72-01.pdf
+  #us_cesarean_rate: 0.321 
+  #us_preterm_rate:  0.1049
+  #threshold_diff: 0.02
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+#| label: set-inputs
+library(tidyverse)
+library(arrow)
+library(bslib)
+library(bsicons)
+library(leaflet)
+library(oce)
+
+build_day <- Sys.Date() 
+
+source('R/climatology_calc.R')
+source('R/future_trend_calc.R')
+source('R/historic_trend_calc.R')
+
+### READ IN INSITU TARGETS
+lake_directory <- getwd()
+options(timeout=300)
+
+insitu_obs_url<- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-insitu.csv"
+
+obs_cleaned <- readr::read_csv(insitu_obs_url) |> 
+  filter(variable %in% c('TEMP','salt'),
+         depth == 1.5) |> ##insitu sensors and met 
+  #dplyr::filter(is.na(inflow_name)) |> 
+  collect() |> 
+  lubridate::with_tz(datetime, tzone = "Australia/Perth")
+
+obs_updated <- max(obs_cleaned$datetime,na.rm = TRUE)
+```
+
+#  {.sidebar}
+
+This dashboard displays statistics for:
+
+|              |                     |
+|--------------|---------------------|
+| **Site** | Canning Weir Pool |
+| **Most Recent Data**    | `{r} obs_updated`   |
+
+------------------------------------------------------------------------
+
+::: {.callout-note collapse="true"}
+## Disclaimer
+The data provided on this page are experimental
+:::
+
+```{r}
+## WATER TEMPERATURE 
+interest_var <- 'TEMP'
+interest_site <- 'CANN'
+day_range <- 10
+
+temp_df <- obs_cleaned |> 
+  filter(variable == interest_var) #|> 
+  #mutate(variable = 'temperature')
+
+temp_updated <- temp_df |> 
+  filter(datetime == max(temp_df$datetime)) |>
+  distinct(datetime) |> 
+  pull(datetime)
+
+current_temp <- temp_df |> 
+  filter(datetime == temp_updated) |> 
+  mutate(var_unit = paste0(round(observation,1), ' °C')) |> 
+  pull(var_unit)
+
+temp_clim_values <- climatology_calc(obs_df = temp_df, day_of_interest = temp_updated, clim_var = interest_var) ## returns CLIM AVG and BS ICON FOR ARROW DIRECTION
+
+temp_trend_future <- future_trend_calc(day_of_interest = temp_updated, interest_var = 'temperature', days_ahead = day_range, interest_site = interest_site)
+
+temp_trend_historic <- historic_trend_calc(day_of_interest = temp_updated, interest_var = 'temperature', days_historic = day_range, interest_site = interest_site)
+```
+
+```{r}
+## SALINITY
+interest_var <- 'salt'
+
+salt_df <- obs_cleaned |> 
+  filter(variable == interest_var)
+
+salt_updated <- salt_df |> 
+  filter(datetime == max(salt_df$datetime)) |>
+  pull(datetime)
+
+current_salt <- salt_df |> 
+  filter(datetime == salt_updated) |> 
+  mutate(var_unit = paste0(round(observation,1), ' ppt')) |> 
+  pull(var_unit)
+
+salt_clim_values <- climatology_calc(obs_df = salt_df, day_of_interest = salt_updated, clim_var = interest_var)
+
+salt_trend_future <- future_trend_calc(day_of_interest = salt_updated, interest_var = interest_var, days_ahead = day_range, interest_site = interest_site)
+
+salt_trend_historic <- historic_trend_calc(day_of_interest = temp_updated, interest_var = interest_var, days_historic = day_range, interest_site = interest_site)
+```
+
+
+```{r, eval = FALSE}
+## LAKE HEIGHT
+interest_var <- 'depth'
+
+depth_df <- obs_cleaned |> 
+  filter(variable == interest_var)
+
+depth_updated <- depth_df |> 
+  filter(datetime == max(depth_df$datetime)) |>
+  pull(datetime)
+
+current_depth <- depth_df |> 
+  filter(datetime == depth_updated) |> 
+  mutate(var_unit = paste0(round(observation,1), ' AHD')) |> 
+  pull(var_unit)
+
+height_clim_values <- climatology_calc(obs_df = depth_df, day_of_interest = depth_updated, clim_var = interest_var)
+
+height_trend_future <- future_trend_calc(day_of_interest = depth_updated, interest_var = interest_var, days_ahead = day_range, interest_site = interest_site)
+
+height_trend_historic <- historic_trend_calc(day_of_interest = temp_updated, interest_var = interest_var, days_historic = day_range, interest_site = interest_site)
+
+```
+
+```{r, include=FALSE}
+## make current condition information for wind 
+## use average wind conditions for last six hours?
+source('./R/degToCompass.R')
+
+# most_recent_wind <- read_csv('targets/ALEX_wind_dir_targets.csv') |> 
+#   mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Adelaide")) |> 
+#   filter(row_number() == n()) |> 
+#   pull(datetime)
+
+met_url <- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-met.csv"
+wind_targets <- readr::read_csv(met_url) |> 
+  dplyr::filter(variable %in% c('wind_speed')) |> 
+  collect() |> 
+  mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Perth"))
+
+
+most_recent_wind <- wind_targets |> 
+  filter(row_number() == n()) |> 
+  pull(datetime)
+
+# wind_dir_obs <- wind_targets |>
+#   filter(variable == 'wind_direction') |> 
+#   filter(datetime > (most_recent_wind - lubridate::hours(5))) |> 
+#   mutate(wind_hour = lubridate::hour(datetime)) |> 
+#   group_by(wind_hour) |>  
+#   summarise(wind_dir_mean_hour = mean(observation, na.rm = TRUE)) |> 
+#   ungroup() |>
+#   summarise(wind_dir_mean = mean(wind_dir_mean_hour)) |> 
+#   mutate(mean_wind_direction = degToCompass(wind_dir_mean))
+
+wind_speed_obs <- wind_targets |>
+  filter(variable == 'wind_speed') |>
+  filter(datetime >= (most_recent_wind - lubridate::hours(5))) |> 
+  filter(datetime <= most_recent_wind) |> 
+  mutate(wind_hour = lubridate::hour(datetime)) |> 
+  group_by(wind_hour) |> 
+  summarise(wind_speed_mean_hour = mean(observation, na.rm = TRUE)*3.6) |> 
+  ungroup() |>
+  summarise(wind_speed_mean = (mean(wind_speed_mean_hour))) ## m/s -> km-hr
+
+# wind_df <- data.frame(wind_dir = wind_dir_obs$wind_dir_mean_hour, wind_speed = wind_speed_obs$wind_speed_mean_hour)
+
+# wind_dates <- read_csv('targets/ALEX_wind_dir_targets.csv') |> 
+#   mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Adelaide")) |> 
+#   filter(datetime > (most_recent_wind - lubridate::hours(6))) |> 
+#   mutate(wind_minute = lubridate::minute(datetime)) |> 
+#   filter(wind_minute == 0)
+
+# wind_df <- data.frame(datetime = wind_dates$datetime,
+#                       wind_dir = wind_dir_obs$wind_dir_mean_hour, 
+#                       wind_speed = wind_speed_obs$wind_speed_mean_hour) |> 
+#   summarise(mean_wind_deg = mean(wind_dir, na.rm = TRUE),
+#          mean_wind_speed = mean(wind_speed, na.rm = TRUE)) |> # convert to km/hr
+#   mutate(mean_wind_direction = degToCompass(mean_wind_deg)) #|> 
+#  # select(datetime, mean_wind_deg, mean_wind_speed, windmean_wind_direction)
+```
+
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Current Water Temperature"
+
+list(
+  icon = "thermometer-half",
+  color = "primary",
+  value = current_temp
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Current Salnity"
+
+list(
+  icon = "droplet-half",
+  color = "primary",
+  value = current_salt
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Lake Height"
+
+list(
+  icon = "calendar-week",
+  color = p_preterm_color,
+  value = label_percent(accuracy = 0.1)(p_preterm)
+)
+```
+
+
+## Row {height="20%"}
+```{r}
+#| content: valuebox
+#| title: "Average Wind Conditions (last 6 hours)"
+
+list(
+  icon = "cloud-fog2",
+  color = "primary",
+  value = paste(round(wind_speed_obs$wind_speed_mean,2), ' km/hr')
+)
+```
+
+## Row {height="20%"}
+```{r}
+#| content: valuebox
+#| title: "Water Temperature Comparison to Historical Average"
+
+list(
+  icon = temp_clim_values[[2]],
+  color = "primary",
+  value = temp_clim_values[[3]]
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Water Salinity Comparison to Historical Average"
+
+list(
+  icon = salt_clim_values[[2]],
+  color = "primary",
+  value = salt_clim_values[[3]]
+)
+```
+
+## Row {height="20%"}
+```{r}
+#| content: valuebox
+#| title: "Water Temperature Comparison to Previous 10-days"
+
+list(
+  icon = temp_trend_historic[[2]],
+  color = "primary",
+  value = temp_trend_historic[[3]]
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Water Temperature Comparison to Previous 10-days"
+
+list(
+  icon = salt_trend_historic[[2]],
+  color = "primary",
+  value = salt_trend_historic[[3]]
+)
+```
+
+## Row {height="20%"}
+```{r}
+#| content: valuebox
+#| title: "Water Temperature Comparison to Future 10-days"
+
+list(
+  icon = temp_trend_future[[2]],
+  color = "primary",
+  value = temp_trend_future[[3]]
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Water Temperature Comparison to Future 10-days"
+
+list(
+  icon = salt_trend_future[[2]],
+  color = "primary",
+  value = salt_trend_future[[3]]
+)
+```
+
+```{r fig.height=5, fig.width=5, echo=FALSE, include=TRUE, message = FALSE}
+#sites <- suppressMessages(sf::st_read("sites.json"))
+
+leaflet() %>%
+  setView(lat = -32.022554, lng = 115.926847, zoom= 15) %>%
+  addTiles(group="OSM") %>%
+  addProviderTiles(providers$Esri.WorldImagery, group="Imagery") %>%
+  addProviderTiles(providers$Esri.WorldTopoMap, group="Topo Map") %>%
+  addLayersControl(baseGroups=c('Imagery','OSM', 'Topo Map')) |>
+  addTitle('Where is this data coming from?')
+  #addMarkers(data  = sites, popup=~as.character(site_id), group = ~as.character(Partner))#, clusterOptions = markerClusterOptions())
+```
