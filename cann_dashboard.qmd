@@ -1,12 +1,18 @@
 ---
 title: "Canning Weir Pool Dashboard"
-format: dashboard
 logo: vt_cef.jpg
-theme: [sandstone, theme/custom.scss]
 fig-width: 10
 fig-asp: 0.3
-editor_options: 
-  chunk_output_type: console
+format:
+  dashboard:
+     theme: default
+     orientation: rows
+     expandable: true
+     scrolling: false
+     nav-buttons:
+      - reddit
+      - icon: github
+        href: https://github.com/FLARE-forecast/cann-dashboard
 ---
 
 ```{r}
