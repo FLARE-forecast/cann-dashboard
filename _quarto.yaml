@@ -1,25 +1,14 @@
 project:
   type: website
   output-dir: docs
+  render: 
+    - cann_dashboard.qmd
 
 website:
   title: "Canning Weir Pool Dashboard"
   page-navigation: true
   repo-url: https://github.com/flare-forecast/cann-dashboard
   repo-actions: [source, issue]
-
-  navbar:
-    background: primary
-    search: true
-    left:
-      - href: index.qmd
-        icon: info-square
-      - href: water.qmd
-        icon: droplet
-      - href: weather.qmd
-        icon: brightness-high-fill
-      - href: learn-more.qmd
-        icon: globe
 
   page-footer:
     left: "CC-BY"
