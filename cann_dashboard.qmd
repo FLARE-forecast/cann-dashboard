@@ -7,7 +7,6 @@ format:
     scrolling: true
     orientation: rows
     expandable: false
-    css: sytle.css
 logo: vt_cef.jpg
 theme: [sandstone, theme/custom.scss]
 fig-width: 10
