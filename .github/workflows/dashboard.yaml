@@ -29,6 +29,8 @@ jobs:
         run: remotes::install_deps(".", dep=TRUE)
 
       - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.6.42
 
       # - name: pull scores cache
       #   shell: Rscript {0}
