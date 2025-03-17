@@ -3,14 +3,15 @@ title: "Canning Weir Pool Dashboard"
 logo: vt_cef.jpg
 fig-width: 10
 fig-asp: 0.3
-dashboard:
-    theme: default
-    orientation: rows
-    expandable: true
-    scrolling: false
-    nav-buttons:
-     - icon: github
-       href: https://github.com/FLARE-forecast/cann-dashboard
+format:
+  dashboard:
+      theme: default
+      orientation: rows
+      expandable: true
+      scrolling: false
+      nav-buttons:
+      - icon: github
+        href: https://github.com/FLARE-forecast/cann-dashboard
 ---
 
 ```{r}
