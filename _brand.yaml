@@ -8,8 +8,13 @@ color:
   background: white
   foreground: black
   primary: blue
+  secondary: orange
   warning: orange
-
+  success: orange
+  info: orange
+  danger: orange
+  light: orange
+  dark: orange
 logo: 
   medium: vt_cef.jpg
 

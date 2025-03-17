@@ -5,7 +5,9 @@ fig-width: 10
 fig-asp: 0.3
 format:
   dashboard:
-      theme: brand
+      theme: 
+        - brand
+        - style.scss
       orientation: rows
       expandable: true
       scrolling: true
