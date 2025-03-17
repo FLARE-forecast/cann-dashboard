@@ -6,24 +6,8 @@ project:
 
 website:
   title: "Canning Weir Pool Dashboard"
-  page-navigation: true
+  page-navigation: false
   repo-url: https://github.com/flare-forecast/cann-dashboard
   repo-actions: [source, issue]
-
-  page-footer:
-    left: "CC-BY"
-    right:
-      - icon: github
-        href: https://github.com/FLARE-forecast/cann-dashboard
-
-format:
-  html:
-    theme: [cerulean, custom.scss]
-    css: styles.css
-    title-block-style: default
-    title-block-banner: "img/banner.jpg"
-    title-block-banner-color: white
-    page-layout: full
-    toc: true
 
 editor: visual
