@@ -8,10 +8,11 @@ format:
       theme: default
       orientation: rows
       expandable: true
-      scrolling: false
+      scrolling: true
       nav-buttons:
       - icon: github
         href: https://github.com/FLARE-forecast/cann-dashboard
+      css: style.css
 ---
 
 ```{r}
