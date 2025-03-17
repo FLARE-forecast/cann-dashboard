@@ -11,3 +11,4 @@ website:
   repo-actions: [source, issue]
 
 editor: visual
+brand: _brand.yaml

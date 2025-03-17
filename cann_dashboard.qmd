@@ -5,7 +5,7 @@ fig-width: 10
 fig-asp: 0.3
 format:
   dashboard:
-      theme: default
+      theme: brand
       orientation: rows
       expandable: true
       scrolling: true
@@ -473,6 +473,7 @@ dashboard_plotting_tool(data = score_df, historic_data = score_df_historic, dept
 ```
 
 # Weather Forecasts
+
 This page contains information about weather in the Canning Weir Pool area. Weather forecasts shown here are provided by the U.S. based [NOAA GEFS](https://www.ncei.noaa.gov/products/weather-climate-models/global-ensemble-forecast) model, which is used as input for the water quality forecasts. Local weather forecasts can be accessed from the [Bureau of Meteorology](https://reg.bom.gov.au/index.php). Observations are provided by [Water Data SA](https://water.data.sa.gov.au/).
 
 ::: {.card title="Wind Forecast with Historical Observations" height='300%'}
