@@ -213,7 +213,7 @@ list(
 
 ```{r}
 #| content: valuebox
-#| title: "Current Salnity"
+#| title: "Current Salinity"
 
 list(
  icon = "droplet-half",
@@ -331,6 +331,7 @@ leaflet() %>%
  addLayersControl(baseGroups=c('Imagery','OSM', 'Topo Map')) #addMarkers(data  = sites, popup=~as.character(site_id), group = ~as.character(Partner))#, clusterOptions = markerClusterOptions())
 ```
 
+## Row {height="10%"}
 ::: {.card }
 This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. <br /> <br />
 
