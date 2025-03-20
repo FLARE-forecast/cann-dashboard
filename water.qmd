@@ -53,7 +53,11 @@ targets_df <- readr::read_csv(insitu_obs_url) |>
 obs_df <- targets_df |> 
   filter(variable == 'temperature',
          datetime <= lubridate::with_tz(lubridate::as_datetime(most_recent) + lubridate::days(1),
-                                        'Australia/Perth'))
+                                        'Australia/Perth')) |> 
+  mutate(observation = ifelse(observation > (mean(observation) + 3 * sd(observation)) | ## outlier detection
+                                   observation < (mean(observation) - 3 * sd(observation)),
+                              NA, 
+                              observation))
 
 # obs_df <- read_csv('./targets/ALEX-targets-insitu.csv') |> 
 #   mutate(datetime = lubridate::with_tz(lubridate::as_datetime(datetime), 'Australia/Adelaide')) |> 
@@ -115,7 +119,11 @@ obs_df <- targets_df |>
   #filter(datetime >= historical_reference_datetime) |> 
   #select(datetime, observation) |> 
   collect() |> 
-  mutate(reference_datetime = most_recent)
+  mutate(reference_datetime = most_recent) |> 
+  mutate(observation = ifelse(observation > (mean(observation) + 3 * sd(observation)) | ## outlier detection
+                                   observation < (mean(observation) - 3 * sd(observation)),
+                              NA, 
+                              observation))
 
 score_df <- arrow::open_dataset(s3_score) |>
   filter(variable == "salt",
@@ -155,7 +163,11 @@ obs_df <- targets_df |>
   #select(datetime, observation) |> 
   collect() |> 
   mutate(reference_datetime = most_recent,
-         observation = observation - 5.3) ## convert to AHD
+         observation = observation - 5.3)  |> ## convert to AHD 
+  mutate(observation = ifelse(observation > (mean(observation) + 3 * sd(observation)) | ## outlier detection
+                                   observation < (mean(observation) - 3 * sd(observation)),
+                              NA, 
+                              observation))
 
 score_df <- arrow::open_dataset(s3_score) |>
   filter(variable == "depth",
