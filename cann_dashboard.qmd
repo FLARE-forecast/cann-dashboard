@@ -28,6 +28,11 @@ library(oce)
 
 build_day <- Sys.Date() 
 
+timezone <- 'Australia/Perth'
+
+model_identifier = 'glm_flare_v3'
+interest_site <- 'CANN'
+
 source('R/climatology_calc.R')
 source('R/future_trend_calc.R')
 source('R/historic_trend_calc.R')
@@ -36,14 +41,14 @@ source('R/historic_trend_calc.R')
 lake_directory <- getwd()
 options(timeout=300)
 
-insitu_obs_url<- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-insitu.csv"
+insitu_obs_url<- "https://amnh1.osn.mghpcc.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-insitu.csv"
 
 obs_cleaned <- readr::read_csv(insitu_obs_url) |> 
   filter(variable %in% c('TEMP','salt'),
          depth == 1.5) |> ##insitu sensors and met 
   #dplyr::filter(is.na(inflow_name)) |> 
   collect() |> 
-  lubridate::with_tz(datetime, tzone = "Australia/Perth")
+  lubridate::with_tz(datetime, tzone = timezone)
 
 obs_updated <- max(obs_cleaned$datetime,na.rm = TRUE)
 ```
@@ -51,7 +56,7 @@ obs_updated <- max(obs_cleaned$datetime,na.rm = TRUE)
 ```{r}
 ## WATER TEMPERATURE 
 interest_var <- 'TEMP'
-interest_site <- 'CANN'
+#interest_site <- 'CANN'
 day_range <- 10
 
 temp_df <- obs_cleaned |> 
@@ -132,11 +137,11 @@ source('./R/degToCompass.R')
 #   filter(row_number() == n()) |> 
 #   pull(datetime)
 
-met_url <- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-met.csv"
+met_url <- "https://amnh1.osn.mghpcc.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-met.csv"
 wind_targets <- readr::read_csv(met_url) |> 
   dplyr::filter(variable %in% c('wind_speed')) |> 
   collect() |> 
-  mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Perth"))
+  mutate(datetime = lubridate::force_tz(datetime, tzone = timezone))
 
 
 most_recent_wind <- wind_targets |> 
@@ -180,7 +185,7 @@ wind_speed_obs <- wind_targets |>
 #  # select(datetime, mean_wind_deg, mean_wind_speed, windmean_wind_direction)
 ```
 
-## {.sidebar}
+##  {.sidebar}
 
 Data for Canning Weir Pool:
 
@@ -196,7 +201,7 @@ Data for Canning Weir Pool:
 The data provided on this page are experimental
 :::
 
-# Current Conditions 
+# Current Conditions
 
 ## Row {height="10%"}
 
@@ -285,7 +290,7 @@ list(
 
 ```{r}
 #| content: valuebox
-#| title: "Water Temperature Comparison to Previous 10-days"
+#| title: "Water Salinity Comparison to Previous 10-days"
 
 list(
  icon = salt_trend_historic[[2]],
@@ -309,7 +314,7 @@ list(
 
 ```{r}
 #| content: valuebox
-#| title: "Water Temperature Comparison to Future 10-days"
+#| title: "Water Salinity Comparison to Future 10-days"
 
 list(
  icon = salt_trend_future[[2]],
@@ -332,7 +337,8 @@ leaflet() %>%
 ```
 
 ## Row {height="10%"}
-::: {.card }
+
+::: card
 This material is based upon work supported by the National Science Foundation under Grant OISE-2330211. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. <br /> <br />
 
 We would like to acknowledge [Water Data SA](https://water.data.sa.gov.au/) for providing observational data for the forecasts presented on this dashboard.
@@ -346,7 +352,6 @@ This page contains information about the water quality of Canning Weir Pool wate
 
 All forecasts are valid for 8:00am AWST (00:00 UTC). Red dots indicate in-situ observations. The black line indicates the mean forecast predictions (both past and future), with uncertainty provided for future forecasts. Uncertainty is separated into sections of higher confidence (blue) and lower confidence (grey) based on predicted days ahead. The climatology average is also included to provide a comparison of the current observations and forecast predictions against typical conditions for this time period.
 
-
 ```{r, warning=FALSE, message=FALSE, echo=FALSE}
 #| title: 'Water Temperature'
 
@@ -354,30 +359,24 @@ library(tidyverse)
 library(arrow)
 source('./R/dashboard_plotting_tool.R')
 
-s3_score <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/scores/parquet", endpoint_override = "renc.osn.xsede.org", anonymous = TRUE)
-s3_forecast <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/forecasts/parquet", endpoint_override = "renc.osn.xsede.org", anonymous = TRUE)
+s3_score <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/scores/parquet", endpoint_override = "amnh1.osn.mghpcc.org", anonymous = TRUE)
+s3_forecast <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/forecasts/parquet", endpoint_override = "amnh1.osn.mghpcc.org", anonymous = TRUE)
 
-insitu_obs_url<- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-insitu.csv"
 obs_cleaned <- readr::read_csv(insitu_obs_url) |> 
   filter(variable %in% c('TEMP','salt'),
          depth == 1.5) |> ##insitu sensors and met 
   #dplyr::filter(is.na(inflow_name)) |> 
   collect() |> 
-  lubridate::with_tz(datetime, tzone = "Australia/Perth")
-
-
-site <- 'CANN'
+  lubridate::with_tz(datetime, tzone = timezone)
 
 most_recent <-  arrow::open_dataset(s3_score) |> 
-  filter(site_id %in% c("CANN"), 
-         model_id == 'glm_flare_v3') |>
+  filter(site_id %in% c(interest_site), 
+         model_id == model_identifier) |>
   summarize(max = max(reference_datetime)) |> 
   collect() |> 
   pull()
 
 #source('R/alex_target_generation.R')
-
-insitu_obs_url<- "https://renc.osn.xsede.org/bio230121-bucket01/flare/targets/CANN/CANN-targets-insitu.csv"
 
 targets_df <- readr::read_csv(insitu_obs_url) |> 
   filter(variable %in% c('TEMP','salt'),
@@ -385,12 +384,12 @@ targets_df <- readr::read_csv(insitu_obs_url) |>
   #dplyr::filter(is.na(inflow_name)) |> 
   collect() |> 
   mutate(variable = ifelse(variable == 'TEMP','temperature',variable)) |> 
-  lubridate::with_tz(datetime, tzone = "Australia/Perth")
+  lubridate::with_tz(datetime, tzone = timezone)
 
 obs_df <- targets_df |> 
   filter(variable == 'temperature',
          datetime <= lubridate::with_tz(lubridate::as_datetime(most_recent) + lubridate::days(1),
-                                        'Australia/Perth'))
+                                        timezone))
 
 # obs_df <- read_csv('./targets/ALEX-targets-insitu.csv') |> 
 #   mutate(datetime = lubridate::with_tz(lubridate::as_datetime(datetime), 'Australia/Adelaide')) |> 
@@ -412,11 +411,11 @@ obs_df <- targets_df |>
 score_df <- arrow::open_dataset(s3_score) |>
   filter(variable == "temperature",
          depth %in% c(1.5),
-         site_id %in% site,
+         site_id %in% interest_site,
          horizon >= 0,
          #reference_datetime == as.Date('1-05-25')) |> 
          reference_datetime == (most_recent),
-         model_id == 'glm_flare_v3') |>
+         model_id == model_identifier) |>
   dplyr::collect()
 
 
@@ -426,15 +425,15 @@ historical_reference_datetime <- most_recent - days(historical_horizon)
 score_df_historic <- arrow::open_dataset(s3_score) |> 
     filter(variable == "temperature",
          depth %in% c(1.5),
-         site_id %in% site,
+         site_id %in% interest_site,
          horizon == 1,
          reference_datetime >= historical_reference_datetime, 
          reference_datetime < most_recent,
-         model_id == 'glm_flare_v3') |> 
+         model_id == model_identifier) |> 
   collect()
   
 
-dashboard_plotting_tool(data = score_df, historic_data = score_df_historic, depths = c(1.5), tzone = 'Australia/Perth', ylims = c(10,30), site_name = site, obs_hist = obs_df, historical_horizon = historical_horizon, forecast_horizon_confidence = 10)
+dashboard_plotting_tool(data = score_df, historic_data = score_df_historic, depths = c(1.5), tzone = timezone, ylims = c(10,30), site_name = interest_site, obs_hist = obs_df, historical_horizon = historical_horizon, forecast_horizon_confidence = 10)
 
 ```
 
@@ -455,31 +454,31 @@ obs_df <- targets_df |>
 score_df <- arrow::open_dataset(s3_score) |>
   filter(variable == "salt",
          depth %in% c(1.5),
-         site_id %in% site,
+         site_id %in% interest_site,
          horizon >= 0,
          reference_datetime == most_recent,
-         model_id == 'glm_flare_v3') |>
+         model_id == model_identifier) |>
   dplyr::collect()
 
 score_df_historic <- arrow::open_dataset(s3_score) |> 
     filter(variable == "salt",
          depth %in% c(1.5),
-         site_id %in% site,
+         site_id %in% interest_site,
          horizon == 1,
          reference_datetime >= historical_reference_datetime, 
          reference_datetime < most_recent,
-         model_id == 'glm_flare_v3') |> 
+         model_id == model_identifier) |> 
   collect()
   
 
-dashboard_plotting_tool(data = score_df, historic_data = score_df_historic, depths = c(1.5), tzone = 'Australia/Perth', ylims = c(0,1), site_name = site, obs_hist = obs_df, historical_horizon = historical_horizon, forecast_horizon_confidence = 10)
+dashboard_plotting_tool(data = score_df, historic_data = score_df_historic, depths = c(1.5), tzone = timezone, ylims = c(0,1), site_name = interest_site, obs_hist = obs_df, historical_horizon = historical_horizon, forecast_horizon_confidence = 10)
 ```
 
 # Weather Forecasts
 
 This page contains information about weather in the Canning Weir Pool area. Weather forecasts shown here are provided by the U.S. based [NOAA GEFS](https://www.ncei.noaa.gov/products/weather-climate-models/global-ensemble-forecast) model, which is used as input for the water quality forecasts. Local weather forecasts can be accessed from the [Bureau of Meteorology](https://reg.bom.gov.au/index.php). Observations are provided by [Water Data SA](https://water.data.sa.gov.au/).
 
-::: {.card title="Wind Forecast with Historical Observations" height='300%'}
+::: {.card title="Wind Forecast with Historical Observations" height="300%"}
 All forecasts are valid for 10:30am ACDT (00:00 UTC). The red line represents observed wind speed with red arrows indicating the wind direction at each available in-situ observation. The black line represents the mean forecast predictions for wind speed with black arrows indicating the wind direction at each prediction. Both past and future wind predictions are provided. The observations and predictions shown represent six-hour averages across the time period.
 
 ```{r setup, include=FALSE, echo=FALSE, message=FALSE, warning=FALSE}
@@ -499,33 +498,34 @@ options(timeout=300)
 
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
 
-s3_score <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/scores/parquet", endpoint_override = "renc.osn.xsede.org", anonymous = TRUE)
-most_recent <-  arrow::open_dataset(s3_score) |> 
-  filter(site_id %in% c("ALEX")) |> 
-  summarize(max = max(reference_datetime)) |> 
-  collect() |> 
-  pull()
+# s3_score <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/scores/parquet", endpoint_override = "renc.osn.xsede.org", anonymous = TRUE)
+
+# most_recent <-  arrow::open_dataset(s3_score) |> 
+#   filter(site_id %in% c(interest_site)) |> 
+#   summarize(max = max(reference_datetime)) |> 
+#   collect() |> 
+#   pull()
 
 ## Met vizualization
 # windspeed 
 noaa_date <- most_recent - lubridate::days(1)
-noaa_df <- arrow::s3_bucket(file.path("bio230121-bucket01/flare/drivers/met/gefs-v12/stage2",paste0("reference_datetime=",noaa_date),paste0("site_id=ALEX")),
-                 endpoint_override = 'renc.osn.xsede.org',
+noaa_df <- arrow::s3_bucket(file.path("bio230121-bucket01/flare/drivers/met/gefs-v12/stage2",paste0("reference_datetime=",noaa_date),paste0("site_id=",interest_site)),
+                 endpoint_override = 'amnh1.osn.mghpcc.org',
                  anonymous = TRUE)
 
 air_temp_df <- arrow::open_dataset(noaa_df) |> 
   dplyr::filter(variable %in% c("air_temperature")) |> 
-  mutate(datetime = lubridate::with_tz(datetime, tzone = "Australia/Adelaide")) |> 
+  mutate(datetime = lubridate::with_tz(datetime, tzone = timezone)) |> 
   collect()
 
 northwind_df <- arrow::open_dataset(noaa_df) |> 
   dplyr::filter(variable %in% c("northward_wind")) |>
-  mutate(datetime = lubridate::with_tz(datetime, tzone = "Australia/Adelaide")) |> 
+  mutate(datetime = lubridate::with_tz(datetime, tzone = timezone)) |> 
   collect()
 
 eastwind_df <- arrow::open_dataset(noaa_df) |> 
   dplyr::filter(variable %in% c("eastward_wind")) |> 
-  mutate(datetime = lubridate::with_tz(datetime, tzone = "Australia/Adelaide")) |> 
+  mutate(datetime = lubridate::with_tz(datetime, tzone = timezone)) |> 
   collect()
 
 future_met_df_em_avg <- dplyr::bind_rows(northwind_df, eastwind_df, air_temp_df) |> 
@@ -549,13 +549,13 @@ future_met_df_em_avg <- dplyr::bind_rows(northwind_df, eastwind_df, air_temp_df)
 
 
 ## NOAA HISTORICAL DATA
-noaa_historical_s3 <- arrow::s3_bucket(bucket = "bio230121-bucket01/flare/drivers/met/gefs-v12/stage3/site_id=ALEX", 
-                                   endpoint_override = "renc.osn.xsede.org", anonymous = TRUE)
+noaa_historical_s3 <- arrow::s3_bucket(bucket = paste0("bio230121-bucket01/flare/drivers/met/gefs-v12/stage3/site_id=",interest_site), 
+                                   endpoint_override = "amnh1.osn.mghpcc.org", anonymous = TRUE)
 
 historical_date_cutoff <- noaa_date - lubridate::days(10)
 
 noaa_historical_df <- arrow::open_dataset(noaa_historical_s3) |> 
-  mutate(datetime = lubridate::with_tz(datetime, tzone = "Australia/Adelaide")) |> 
+  mutate(datetime = lubridate::with_tz(datetime, tzone = timezone)) |> 
   filter(variable %in% c('air_temperature','northward_wind','eastward_wind'),
          #datetime <= noaa_date, 
          datetime > historical_date_cutoff) |>
@@ -582,11 +582,11 @@ historical_met_df_em_avg <- noaa_historical_df |>
 
 
 ## READ IN WIND OBSERVATIONS
-wind_dir_obs <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/ALEX/', endpoint_override = 'renc.osn.xsede.org', anonymous = TRUE)) |> 
+wind_dir_obs <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/CANN/', endpoint_override = 'amnh1.osn.mghpcc.org', anonymous = TRUE)) |> 
   dplyr::filter(variable == 'wind_direction') |> 
   collect() |> 
-  #mutate(datetime = lubridate::with_tz(datetime, tzone = "Australia/Adelaide")) |> 
-  mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Adelaide")) |> 
+  #mutate(datetime = lubridate::with_tz(datetime, tzone = timezone)) |> 
+  mutate(datetime = lubridate::force_tz(datetime, tzone = timezone)) |> 
   filter(datetime > (historical_date_cutoff)) |> #, 
          #datetime <= noaa_date) |> 
   mutate(date = as.Date(datetime),
@@ -598,11 +598,11 @@ wind_dir_obs <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/fla
          datetime = as.POSIXct(paste(date,time), format="%Y-%m-%d %H:%M:%S")) |> 
   select(datetime, wind_deg_obs)
 
-wind_velocity_obs <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/ALEX/', endpoint_override = 'renc.osn.xsede.org', anonymous = TRUE)) |> 
+wind_velocity_obs <- arrow::open_csv_dataset(arrow::s3_bucket('bio230121-bucket01/flare/targets/CANN/', endpoint_override = 'amnh1.osn.mghpcc.org', anonymous = TRUE)) |> 
   dplyr::filter(variable == 'wind_velocity') |> 
   collect() |> 
   #mutate(datetime = lubridate::with_tz(datetime, tzone = "Australia/Adelaide")) |> 
-  mutate(datetime = lubridate::force_tz(datetime, tzone = "Australia/Adelaide")) |>   
+  mutate(datetime = lubridate::force_tz(datetime, tzone = timezone)) |>   
   filter(datetime > (historical_date_cutoff)) |> #, 
          #datetime < noaa_date) |>
   mutate(date = as.Date(datetime),
@@ -641,8 +641,8 @@ filter(!(date == noaa_date & is.na(wind_deg_obs)))
 # make wind plot with arrows 
 
 wind_plot_df <- full_met_data_df |> 
-  filter(datetime > (lubridate::with_tz(most_recent, tzone = "Australia/Adelaide") - lubridate::days(3)),
-         datetime < lubridate::with_tz(most_recent, tzone = "Australia/Adelaide") + lubridate::days(3)) |> 
+  filter(datetime > (lubridate::with_tz(most_recent, tzone = timezone) - lubridate::days(3)),
+         datetime < lubridate::with_tz(most_recent, tzone = timezone) + lubridate::days(3)) |> 
   group_by(hour_group = lubridate::floor_date(datetime, '6 hour')) |> 
   summarise(wind_speed_mean = mean(wind_speed, na.rm = T),
             wind_deg_mean = mean(wind_deg, na.rm = T),
@@ -657,7 +657,7 @@ wind_plot_df <- full_met_data_df |>
 compass <-readJPEG('./north_arrow_black.jpg')
 
 
-weather_time_match <- lubridate::with_tz(most_recent, tzone = "Australia/Adelaide") - 
+weather_time_match <- lubridate::with_tz(most_recent, tzone = timezone) - 
   lubridate::hours(4) - lubridate::minutes(30)
 
 wind_plot_x_labels <- wind_plot_df |> 
@@ -763,10 +763,9 @@ at_plot
 ```
 :::
 
-
 # Learn more
 
-See below for additional information about Lake Alexandrina, information on how to access the forecasts for this site, and information about the [Center for Ecosystem Forecasting](https://ecoforecast.centers.vt.edu/) at Virginia Tech.
+See below for additional information about the Canning Weir Pool, information on how to access the forecasts for this site, and information about the [Center for Ecosystem Forecasting](https://ecoforecast.centers.vt.edu/) at Virginia Tech.
 
 ::: {.card title = "Documentation for Canning Wier Pool Forecasts"}
 
@@ -775,7 +774,6 @@ We provide the full code repository for Canning Weir Pool forecasts [here](https
 We maintain and deploy the FLARE model framework to create our water quality forecasts. More information on the FLARE project can be found [here](https://flare-forecast.org/)
 
 :::
-
 
 ::: {.card title = "Relevant Research from the Center for Ecosystem Forecasting"}
 
