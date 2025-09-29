@@ -159,11 +159,9 @@ dashboard_plotting_tool <- function(data, historic_data, depths = 0.5, tzone = "
                                      labels = c('Forecast Date')) +
       ggplot2::scale_y_continuous(name = var_unit,
                                   limits = ylims) +
-      ggplot2::labs(x = "Date",
+ggplot2::labs(x = "Date",
                     y = var_unit,
-                    fill = 'Depth (m)',
-                    color = 'Depth',
-                    title = paste0(var_title," Forecast, ", lubridate::date(most_recent)), '(30-days ahead)') +
+                    title = paste0(var_title," Forecast, ", lubridate::date(most_recent), ' (30-days ahead)')) +
       ggplot2::theme(axis.text.x = ggplot2::element_text(size = 10),
                      plot.title = element_text(hjust = 0.5))
     
