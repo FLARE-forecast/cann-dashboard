@@ -190,9 +190,9 @@ dashboard_plotting_tool <- function(data, historic_data, depths = 0.5, tzone = "
                                      labels = c('Forecast Date')) +
       ggplot2::scale_y_continuous(name = var_unit,
                                   limits = ylims) +
-      ggplot2::labs(x = "Date",
+     ggplot2::labs(x = "Date",
                     y = var_unit,
-                    title = paste0(var_title," Forecast, ", lubridate::date(most_recent)), '(30-days ahead)') +
+                    title = paste0(var_title," Forecast, ", lubridate::date(most_recent), ' (30-days ahead)')) +
       # scale_colour_manual("", 
       #                     values = c("forecast_mean"="black", `historical mean` ="darkslategrey")) +
       scale_color_manual("", values = c("Future Predictions"="black", 
